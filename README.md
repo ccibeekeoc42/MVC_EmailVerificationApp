@@ -22,4 +22,18 @@ The MVC pattern allows the programmer to seperate concerns by dividing and appli
 
 - **The Controller**: this is the link between the Model and the View. it sends commands to update the state of the model based on actions from the View. it has a bi-directional connection to the View as it can also update the state of the view based on the model.
 
-- **The View**: this is the component that faces the end user/ client. it is the user interface that represents the model as it has logic to display data.
+- **The View**: this is the component that faces the end user/ client. it is the user interface that represents the model as it has logic to display data. The view typically communicates with the controller directly.
+
+### Intro To Model-View-Controller (MVC) Design Pattern
+
+- **The Model Class**: Below are the steps to build the model.
+  - The model class recieves the email data as input to the constructor.
+  - Then uses getter and setter properties to get and set the email respectively.
+    - The setter first uses regular expressions to check that the email provided matches a standard pattern.
+    - if the pattern is correct, it sets the email variable correctly.
+    - if the pattern is NOT correct, it throws a ValueError of an invalid email address.
+- The model class also implements the logic to talk to the database (storage) by saving the provided email into a txt file.
+
+- **The View Class**: Below are the steps to build the view.
+
+###### Credits: https://www.pythontutorial.net/tkinter/tkinter-mvc/#:~:text=The%20MVC%20design%20pattern%20allows,especially%20when%20the%20application%20grows.
