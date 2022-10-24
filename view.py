@@ -1,4 +1,4 @@
-from tkinter import ttk
+from tkinter import END, ttk
 import tkinter as tk
 
 
@@ -20,6 +20,11 @@ class View(ttk.Frame):
             self, text='Save', command=self.save_button_clicked)
         self.save_button.grid(row=1, column=3, padx=10)
 
+        # retrieve button
+        self.retrieve_button = ttk.Button(
+            self, text='Retrieve', command=self.retrieve_button_clicked)
+        self.retrieve_button.grid(row=1, column=4, padx=0)
+
         # message
         self.message_label = ttk.Label(self, text='', foreground='red')
         self.message_label.grid(row=2, column=1, sticky=tk.W)
@@ -32,9 +37,17 @@ class View(ttk.Frame):
         self.controller = controller
 
     def save_button_clicked(self):
-        '''Handle button click event'''
+        '''Handles the save button click event'''
         if self.controller:
             self.controller.save(self.email_var.get())
+
+    def retrieve_button_clicked(self):
+        '''Handles the retrieve button click event'''
+        if self.controller:
+            text = self.controller.retrieve()
+            print(text)
+            self.email_entry.delete(0, END)
+            self.email_entry.insert(0, text)
 
     def show_error(self, message):
         '''Show an error message'''

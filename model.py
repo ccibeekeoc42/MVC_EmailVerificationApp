@@ -4,6 +4,7 @@ import re
 class Model:
     def __init__(self, email):
         self.email = email
+        self.retrieved_email = ""
 
     @property
     def email(self):
@@ -22,3 +23,8 @@ class Model:
         '''Writes/ saves the email into a file'''
         with open('email.txt', 'a') as f:
             f.write(f'{self.email}\n')
+
+    def retrieve(self):
+        '''Reads the email from a file'''
+        with open('email.txt', 'r') as f:
+            self.retrieved_email = f.readline().strip()
